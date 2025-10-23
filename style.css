@@ -1,0 +1,76 @@
+/* Pixel Node Neon Theme */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top left, #0d012b, #03000f);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 50px 20px;
+  background: rgba(30, 0, 80, 0.6);
+  box-shadow: 0 0 20px rgba(110, 60, 255, 0.4);
+}
+
+h1, h2, h3 {
+  color: #7b5eff;
+  text-shadow: 0 0 20px #7b5eff;
+}
+
+p {
+  color: #d0d0ff;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(10, 0, 40, 0.8);
+  border-bottom: 1px solid #4a3cff;
+}
+
+nav a {
+  text-decoration: none;
+  color: #a3a3ff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #6f4bff;
+}
+
+.button {
+  display: inline-block;
+  background: linear-gradient(90deg, #6c4fff, #4fc3ff);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.button:hover {
+  box-shadow: 0 0 20px #6f4bff;
+  transform: scale(1.05);
+}
+
+section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+footer {
+  background: rgba(10, 0, 40, 0.8);
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-size: 0.9em;
+  border-top: 1px solid #4a3cff;
+}

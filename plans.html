@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Node - Plans</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+    select {
+      background: #0a0320;
+      border: 1px solid #4a3cff;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    select:hover {
+      box-shadow: 0 0 10px #6f4bff;
+    }
+
+    .plans-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .plan-card {
+      background: rgba(20, 10, 60, 0.8);
+      border: 1px solid #3827ff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 20px rgba(90, 60, 255, 0.3);
+      transition: 0.3s;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(125, 70, 255, 0.6);
+    }
+
+    .plan-title {
+      font-size: 1.2em;
+      color: #9f8aff;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.8em;
+      color: #66e0ff;
+      margin: 10px 0;
+    }
+
+    .spec {
+      font-size: 0.95em;
+      color: #cfcfff;
+      margin: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .order-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(90deg, #6c4fff, #4fc3ff);
+      padding: 10px 20px;
+      border-radius: 25px;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    .order-btn:hover {
+      box-shadow: 0 0 15px #6f4bff;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>💰 Plans & Pricing</h1>
+    <p>Choose the perfect plan for your hosting needs</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="plans.html">Plans</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Support</a>
+    <a href="client.html">Client Area</a>
+  </nav>
+
+  <div class="filter-bar">
+    <select id="countrySelect">
+      <option value="India">🇮🇳 India</option>
+      <option value="USA">🇺🇸 USA</option>
+    </select>
+
+    <select id="cpuSelect">
+      <option value="Xeon">Intel Xeon – Standard</option>
+      <option value="Ryzen">AMD Ryzen – Performance</option>
+    </select>
+  </div>
+
+  <div class="plans-container" id="plansContainer"></div>
+
+  <footer>© 2025 Pixel Node. All Rights Reserved.</footer>
+
+  <script>
+    const plansData = {
+      India: {
+        Xeon: [
+          { name: "India - Xeon XS", price: "$3.00/mo", cpu: "Intel Xeon (1 vCore)", ram: "6 GB DDR4 ECC", storage: "50 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "India - Xeon S", price: "$5.00/mo", cpu: "Intel Xeon (2 vCores)", ram: "8 GB DDR4 ECC", storage: "80 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "India - Xeon M", price: "$7.00/mo", cpu: "Intel Xeon (4 vCores)", ram: "12 GB DDR4 ECC", storage: "100 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "India - Xeon L", price: "$10.00/mo", cpu: "Intel Xeon (6 vCores)", ram: "16 GB DDR4 ECC", storage: "150 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+        ],
+        Ryzen: [
+          { name: "India - Ryzen XS", price: "$4.00/mo", cpu: "AMD Ryzen (1 vCore)", ram: "8 GB DDR4", storage: "60 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "India - Ryzen S", price: "$6.00/mo", cpu: "AMD Ryzen (2 vCores)", ram: "10 GB DDR4", storage: "100 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "India - Ryzen M", price: "$8.00/mo", cpu: "AMD Ryzen (4 vCores)", ram: "14 GB DDR4", storage: "150 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "India - Ryzen L", price: "$11.00/mo", cpu: "AMD Ryzen (6 vCores)", ram: "20 GB DDR4", storage: "200 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+        ],
+      },
+      USA: {
+        Xeon: [
+          { name: "USA - Xeon XS", price: "$4.00/mo", cpu: "Intel Xeon (1 vCore)", ram: "6 GB DDR4 ECC", storage: "50 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "USA - Xeon S", price: "$6.00/mo", cpu: "Intel Xeon (2 vCores)", ram: "8 GB DDR4 ECC", storage: "80 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "USA - Xeon M", price: "$8.00/mo", cpu: "Intel Xeon (4 vCores)", ram: "12 GB DDR4 ECC", storage: "100 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "USA - Xeon L", price: "$11.00/mo", cpu: "Intel Xeon (6 vCores)", ram: "16 GB DDR4 ECC", storage: "150 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+        ],
+        Ryzen: [
+          { name: "USA - Ryzen XS", price: "$5.00/mo", cpu: "AMD Ryzen (1 vCore)", ram: "8 GB DDR4", storage: "60 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "USA - Ryzen S", price: "$7.00/mo", cpu: "AMD Ryzen (2 vCores)", ram: "10 GB DDR4", storage: "100 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "USA - Ryzen M", price: "$9.00/mo", cpu: "AMD Ryzen (4 vCores)", ram: "14 GB DDR4", storage: "150 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+          { name: "USA - Ryzen L", price: "$12.00/mo", cpu: "AMD Ryzen (6 vCores)", ram: "20 GB DDR4", storage: "200 GB NVMe SSD", bandwidth: "1 Gbps", ddos: "Advanced DDoS Protection" },
+        ],
+      },
+    };
+
+    const countrySelect = document.getElementById("countrySelect");
+    const cpuSelect = document.getElementById("cpuSelect");
+    const plansContainer = document.getElementById("plansContainer");
+
+    function renderPlans() {
+      const country = countrySelect.value;
+      const cpu = cpuSelect.value;
+      plansContainer.innerHTML = "";
+      plansData[country][cpu].forEach((plan) => {
+        const card = document.createElement("div");
+        card.className = "plan-card";
+        card.innerHTML = `
+          <div class="plan-title">${plan.name}</div>
+          <div class="price">${plan.price}</div>
+          <div class="spec">⚙️ ${plan.cpu}</div>
+          <div class="spec">💾 ${plan.ram}</div>
+          <div class="spec">📦 ${plan.storage}</div>
+          <div class="spec">🌐 Bandwidth: ${plan.bandwidth}</div>
+          <div class="spec">🛡️ ${plan.ddos}</div>
+          <a href="#" class="order-btn">Order Now →</a>
+        `;
+        plansContainer.appendChild(card);
+      });
+    }
+
+    countrySelect.addEventListener("change", renderPlans);
+    cpuSelect.addEventListener("change", renderPlans);
+    renderPlans();
+  </script>
+</body>
+</html>
